@@ -1,16 +1,19 @@
 package main
 
 import (
-	"Belanjaan/routes"
+	"Belanjaan/route"
+	"fmt"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	router := gin.Default()
+	var itemList route.ItemList
+	fmt.Println(itemList.ListOfItem)
 
-	router.GET("/items", routes.GetItem)
-	router.POST("items", routes.AddNewItem)
+	router.POST("/items", itemList.AddNewItem)
+	router.GET("/items", itemList.GetItem)
 
 	router.Run()
 }
