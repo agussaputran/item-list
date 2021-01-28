@@ -14,6 +14,7 @@ func main() {
 
 	router.POST("/items", itemList.AddNewItem)
 	router.GET("/items", itemList.GetItem)
+	router.PATCH("/items/:item", itemList.UpdateItem)
 
 	router.Run()
 }
