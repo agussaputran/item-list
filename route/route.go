@@ -1,8 +1,6 @@
 package route
 
 import (
-	"fmt"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -50,16 +48,13 @@ func (list *ItemList) GetItem(c *gin.Context) {
 func (list *ItemList) UpdateItem(c *gin.Context) {
 	var nameInput = c.Param("item")
 
-	// var updatedName = c.PostForm("name")
 	var updatedQty = c.PostForm("qty")
 	var updatedPrice = c.PostForm("price")
 
-	for _, v := range list.ListOfItem {
-		fmt.Println(v.Name)
+	for i, v := range list.ListOfItem {
 		if nameInput == v.Name {
-			// v.Name = updatedName
-			v.Qty = updatedQty
-			v.Price = updatedPrice
+			list.ListOfItem[i].Qty = updatedQty
+			list.ListOfItem[i].Price = updatedPrice
 		}
 	}
 }
